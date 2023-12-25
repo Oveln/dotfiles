@@ -27,6 +27,8 @@ M.config = function()
             "tsx",
             "typescript",
             "yaml",
+            "vue",
+            "scss",
         },
         sync_install = false,
         highlight = {

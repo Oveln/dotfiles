@@ -6,6 +6,7 @@ local M = {
 M.config = function()
     local formatter = require("formatter")
     local util = require("formatter.util")
+    local types = require("formatter.filetypes")
 
     formatter.setup({
         logging = true,
@@ -21,12 +22,31 @@ M.config = function()
                             "--stdin-filepath",
                             util.escape_path(util.get_current_buffer_file_path()),
                             "--",
-                            "-"
+                            "-",
                         },
-            stdin = true,
+                        stdin = true,
                     }
                 end,
             },
+            vue = {
+                types.vue.prettier,
+            },
+            typescript = {
+                types.typescript.prettier,
+            },
+            javascript = {
+                types.javascript.prettier,
+            },
+            html = {
+                types.html.prettier,
+            },
+            css = {
+                types.css.prettier,
+            },
+            markdown = {
+                types.markdown.prettier,
+            },
+
         },
     })
 

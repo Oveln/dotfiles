@@ -19,10 +19,34 @@ M.config = function()
         -- see :help lsp-zero-keybindings
         -- to learn the available actions
         lsp_zero.default_keymaps({ buffer = bufnr })
+        vim.diagnostic.config({
+            severity_sort = true,
+            underline = true,
+            signs = true,
+            virtual_text = false,
+            update_in_insert = false,
+            float = true,
+        })
     end)
 
+    lsp_zero.set_sign_icons({
+        error = "✘",
+        warn = "▲",
+        hint = "⚑",
+        info = "»",
+    })
+
     require("mason").setup({})
+
+    local ensure_installed_list = {
+        "eslint",
+        "rust_analyzer",
+        "lua_ls",
+        "volar",
+    }
+
     require("mason-lspconfig").setup({
+        ensure_installed = ensure_installed_list,
         handlers = {
             lsp_zero.default_setup,
         },
@@ -30,6 +54,7 @@ M.config = function()
 
     local lspconfig = require("lspconfig")
     require("config.lsp.lua").setup(lspconfig, lsp_zero)
+    require("config.lsp.web").setup(lspconfig, lsp_zero)
 end
 
 return M
