@@ -1,4 +1,4 @@
-local M = {
+local rooter = {
     "airblade/vim-rooter",
     lazy = false,
     init = function()
@@ -12,6 +12,23 @@ local M = {
         --     end,
         -- })
     end,
+}
+
+local lazygit = {
+    "kdheepak/lazygit.nvim",
+    event = "VeryLazy",
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+    },
+}
+
+lazygit.config = function()
+    vim.keymap.set("n", "<leader>gg", ":LazyGit<CR>", { noremap = true, silent = true })
+end
+
+local M = {
+    rooter,
+    lazygit,
 }
 
 return M
