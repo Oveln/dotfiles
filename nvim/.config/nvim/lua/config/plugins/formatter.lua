@@ -39,6 +39,9 @@ M.config = function()
             c = {
                 require("config.formatter.c_cpp"),
             },
+            rust = {
+                require("config.formatter.rust"),
+            },
         },
     })
 

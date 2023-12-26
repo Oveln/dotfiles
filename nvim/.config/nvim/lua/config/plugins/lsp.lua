@@ -1,5 +1,6 @@
 local M = {
     "VonHeikemen/lsp-zero.nvim",
+    event = "VeryLazy",
     branch = "v3.x",
     dependencies = {
         {
@@ -10,6 +11,9 @@ local M = {
         },
         { "williamboman/mason-lspconfig.nvim" },
         { "williamboman/mason.nvim" },
+        {
+            "simrat39/rust-tools.nvim",
+        },
     },
 }
 M.config = function()
@@ -56,6 +60,7 @@ M.config = function()
     local lspconfig = require("lspconfig")
     require("config.lsp.lua").setup(lspconfig, lsp_zero)
     require("config.lsp.web").setup(lspconfig, lsp_zero)
+    require("config.lsp.rust").setup()
 end
 
 return M
