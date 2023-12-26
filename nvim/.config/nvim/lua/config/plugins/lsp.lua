@@ -43,6 +43,7 @@ M.config = function()
         "rust_analyzer",
         "lua_ls",
         "volar",
+        "clangd",
     }
 
     require("mason-lspconfig").setup({

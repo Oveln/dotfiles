@@ -13,20 +13,7 @@ M.config = function()
         log_level = vim.log.levels.WARN,
         filetype = {
             lua = {
-                function()
-                    return {
-                        exe = "stylua",
-                        args = {
-                            "--search-parent-directories",
-                            "--indent-type=Spaces",
-                            "--stdin-filepath",
-                            util.escape_path(util.get_current_buffer_file_path()),
-                            "--",
-                            "-",
-                        },
-                        stdin = true,
-                    }
-                end,
+                require("config.formatter.lua"),
             },
             vue = {
                 types.vue.prettier,
@@ -46,7 +33,12 @@ M.config = function()
             markdown = {
                 types.markdown.prettier,
             },
-
+            cpp = {
+                require("config.formatter.c_cpp"),
+            },
+            c = {
+                require("config.formatter.c_cpp"),
+            },
         },
     })
 
