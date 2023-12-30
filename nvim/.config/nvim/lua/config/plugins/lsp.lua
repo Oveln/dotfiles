@@ -61,6 +61,7 @@ M.config = function()
     require("config.lsp.lua").setup(lspconfig, lsp_zero)
     require("config.lsp.web").setup(lspconfig, lsp_zero)
     require("config.lsp.rust").setup()
+    require("config.lsp.c_cpp").setup(lspconfig, lsp_zero)
 end
 
 return M
