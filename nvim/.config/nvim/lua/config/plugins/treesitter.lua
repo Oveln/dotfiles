@@ -29,6 +29,8 @@ M.config = function()
             "yaml",
             "vue",
             "scss",
+            "markdown",
+            "markdown_inline",
         },
         sync_install = false,
         highlight = {

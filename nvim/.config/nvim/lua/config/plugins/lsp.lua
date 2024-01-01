@@ -7,6 +7,20 @@ local M = {
             "neovim/nvim-lspconfig",
             dependencies = {
                 { "hrsh7th/cmp-nvim-lsp" },
+                {
+                    "nvimdev/lspsaga.nvim",
+                    config = function()
+                        require("lspsaga").setup({
+                            outline = {
+                                -- layout = "float",
+                            },
+                        })
+                    end,
+                    dependencies = {
+                        "nvim-treesitter/nvim-treesitter", -- optional
+                        "nvim-tree/nvim-web-devicons", -- optional
+                    },
+                },
             },
         },
         { "williamboman/mason-lspconfig.nvim" },
@@ -23,6 +37,18 @@ M.config = function()
         -- see :help lsp-zero-keybindings
         -- to learn the available actions
         lsp_zero.default_keymaps({ buffer = bufnr })
+        local keymap = vim.keymap
+        local keymap_opts = { noremap = true, silent = true, buffer = bufnr }
+        keymap.set("n", "gd", ":Lspsaga peek_definition<CR>", keymap_opts)
+        keymap.set("n", "go", ":Lspsaga peek_type_definition<CR>", keymap_opts)
+        -- map.set("n", "<leader>gd", ":Lspsaga goto_definition<CR>", map_opts)
+        -- map.set("n", "<leader>gt", ":Lspsaga goto_type_definition<CR>", map_opts)
+        keymap.set("n", "K", ":Lspsaga hover_doc<CR>", keymap_opts)
+        keymap.set("n", "ga", ":Lspsaga code_action<CR>", keymap_opts)
+        keymap.set("n", "gi", ":Lspsaga finder imp<CR>", keymap_opts)
+        keymap.set("n", "gf", ":Lspsaga finder<CR>", keymap_opts)
+        keymap.set("n", "gr", ":Lspsaga rename<CR>", keymap_opts)
+        keymap.set("n", "gO", ":Lspsaga outline<CR>", keymap_opts)
         vim.diagnostic.config({
             severity_sort = true,
             underline = true,
