@@ -25,15 +25,15 @@ local M = {
         },
         { "williamboman/mason-lspconfig.nvim" },
         { "williamboman/mason.nvim" },
-        {
-            "simrat39/rust-tools.nvim",
-        },
     },
 }
 M.config = function()
     local lsp_zero = require("lsp-zero")
 
-    lsp_zero.on_attach(function(_, bufnr)
+    lsp_zero.on_attach(function(client, bufnr)
+        if client.name == "copilot" then
+            return
+        end
         -- see :help lsp-zero-keybindings
         -- to learn the available actions
         lsp_zero.default_keymaps({ buffer = bufnr })
@@ -43,9 +43,16 @@ M.config = function()
         keymap.set("n", "go", ":Lspsaga peek_type_definition<CR>", keymap_opts)
         -- map.set("n", "<leader>gd", ":Lspsaga goto_definition<CR>", map_opts)
         -- map.set("n", "<leader>gt", ":Lspsaga goto_type_definition<CR>", map_opts)
+        if client.name == "rust-analyzer" then
+            print("Rust LSP attached to buffer %d", bufnr)
+            keymap.set("n", "?", ":RustLsp renderDiagnostic<CR>", keymap_opts)
+            keymap.set("n", "ga", ":RustLsp codeAction<CR>", keymap_opts)
+        else
+            print("Other LSP attached to buffer %d", bufnr)
+            keymap.set("n", "ga", ":Lspsaga code_action<CR>", keymap_opts)
+            keymap.set("n", "?", ":Lspsaga show_line_diagnostics<CR>", keymap_opts)
+        end
         keymap.set("n", "K", ":Lspsaga hover_doc<CR>", keymap_opts)
-        keymap.set("n", "?", ":Lspsaga show_line_diagnostics<CR>", keymap_opts)
-        keymap.set("n", "ga", ":Lspsaga code_action<CR>", keymap_opts)
         keymap.set("n", "gi", ":Lspsaga finder imp<CR>", keymap_opts)
         keymap.set("n", "gf", ":Lspsaga finder<CR>", keymap_opts)
         keymap.set("n", "gr", ":Lspsaga rename<CR>", keymap_opts)
@@ -54,10 +61,14 @@ M.config = function()
             severity_sort = true,
             underline = true,
             signs = true,
-            virtual_text = false,
-            update_in_insert = false,
+            virtual_text = {
+                severity = vim.diagnostic.severity.E,
+            },
+            update_in_insert = true,
             float = true,
         })
+        -- 类型推断
+        vim.lsp.inlay_hint.enable()
     end)
 
     lsp_zero.set_sign_icons({
@@ -80,14 +91,14 @@ M.config = function()
     require("mason-lspconfig").setup({
         ensure_installed = ensure_installed_list,
         handlers = {
-            lsp_zero.default_setup,
+            -- lsp_zero.default_setup,
+            rust_analyzer = function() end,
         },
     })
 
     local lspconfig = require("lspconfig")
     require("config.lsp.lua").setup(lspconfig, lsp_zero)
     require("config.lsp.web").setup(lspconfig, lsp_zero)
-    require("config.lsp.rust").setup()
     require("config.lsp.c_cpp").setup(lspconfig, lsp_zero)
 end
 
