@@ -39,7 +39,7 @@ M.config = function()
         -- This is only relevant when you are using 'run_on_start'. It has no
         -- effect when running manually via ':MasonToolsInstall' etc....
         -- Default: nil
-        debounce_hours = 0, -- at least 5 hours between attempts to install/update
+        debounce_hours = 2, -- at least 5 hours between attempts to install/update
     })
 end
 return M
