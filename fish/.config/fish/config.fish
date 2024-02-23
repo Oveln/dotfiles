@@ -3,12 +3,12 @@ if status is-interactive
 end
 
 # proxy
-set -x http_proxy http://172.17.16.1:7890
+switch $hostname
+    case Oveln-PC
+        set -x proxy_url http://172.27.192.1:7890
+end
+set -x http_proxy $proxy_url
 set -x https_proxy $http_proxy
-
-# bun
-set -x BUN_INSTALL "$HOME/.bun"
-set -x PATH $BUN_INSTALL/bin $PATH
 
 # rust
 set -x PATH /home/oveln/.cargo/bin/ $PATH
