@@ -35,3 +35,7 @@ end
 function cls
     clear $argv
 end
+
+alias vi="nvim"
+alias lgit="lazygit"
+alias jo="joshuto"
