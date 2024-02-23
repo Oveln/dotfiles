@@ -1,6 +1,6 @@
 local M = {
     "Bekaboo/dropbar.nvim",
-    event = "UIEnter",
+    -- event = "UIEnter",
 }
 
 M.config = function()
