@@ -1,6 +1,9 @@
 local M = {
     "mhartington/formatter.nvim",
     event = "BufWinEnter",
+    dependencies = {
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
+    },
 }
 
 M.config = function()
