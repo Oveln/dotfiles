@@ -43,3 +43,7 @@ end
 alias vi="nvim"
 alias lgit="lazygit"
 alias jo="joshuto"
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
