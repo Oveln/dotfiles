@@ -12,11 +12,11 @@ config.font_size = 13.0
 config.line_height = 0.9
 config.cell_width = 1
 
-config.initial_cols = 90
-config.initial_rows = 30
+config.initial_cols = 120
+config.initial_rows = 50
 
 -- open wsl in windows
--- config.default_prog = { "wsl.exe" }
--- config.default_cwd = "//wsl$/Ubuntu/home/oveln"
+config.default_prog = { "wsl.exe" }
+config.default_cwd = "//wsl$/Ubuntu/home/oveln"
 
 return config
