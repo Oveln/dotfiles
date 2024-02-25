@@ -2,6 +2,8 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
+set LANG en_US
+set EDITOR nvim
 # proxy
 switch $hostname
     case Oveln-PC
