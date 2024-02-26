@@ -2,14 +2,15 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-set LANG en_US
 set EDITOR nvim
 # proxy
 switch $hostname
     case Oveln-PC
         set -x proxy_url http://172.27.192.1:7890
     case Oveln-Laptop
-	set -x proxy_url http://localhost:7890
+        set -x proxy_url http://localhost:7890
+    set LANG "en_US.UTF-8"
+    set LANGUAGE "en_US"
 end
 set -x http_proxy $proxy_url
 set -x https_proxy $http_proxy
