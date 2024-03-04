@@ -4,7 +4,7 @@ local config = wezterm.config_builder()
 config.color_scheme = "Afterglow"
 config.enable_tab_bar = false
 -- config.tab_bar_at_bottom = true
-config.window_background_opacity = 0.95
+-- config.window_background_opacity = 0.95
 
 -- font config
 config.font = wezterm.font("JetBrainsMono Nerd Font Mono")
