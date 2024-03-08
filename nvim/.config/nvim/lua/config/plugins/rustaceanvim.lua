@@ -3,9 +3,10 @@ local M = {
     version = "^4", -- Recommended
     ft = { "rust" },
     dependencies = {
-        "VonHeikemen/lsp-zero.nvim",
+        --     "VonHeikemen/lsp-zero.nvim",
+        "neovim/nvim-lspconfig",
     },
-    event = "VeryLazy",
+    lazy = false,
 }
 
 M.init = require("config.lsp.rust").setup()
