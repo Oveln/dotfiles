@@ -34,6 +34,7 @@ o.splitbelow = true
 o.showmode = false
 o.ignorecase = true
 o.smartcase = true
+o.mouse = "a"
 
 o.shortmess = o.shortmess .. "c"
 o.inccommand = "split"
