@@ -8,12 +8,15 @@ config.window_background_opacity = 0.95
 
 -- font config
 config.font = wezterm.font("JetBrainsMono Nerd Font Mono")
-config.font_size = 13.0
+config.font_size = 19.0
 config.line_height = 0.9
 config.cell_width = 1
 
-config.initial_cols = 90
-config.initial_rows = 30
+config.initial_cols = 100
+config.initial_rows = 35
+
+-- open tmux default
+config.default_prog = { "tmux" }
 
 -- open wsl in windows
 -- config.default_prog = { "wsl.exe" }
