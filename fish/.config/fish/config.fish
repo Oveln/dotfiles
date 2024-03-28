@@ -53,3 +53,6 @@ alias jo="joshuto"
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
+
+# Created by `pipx` on 2024-03-27 06:30:41
+set PATH $PATH /home/oveln/.local/bin

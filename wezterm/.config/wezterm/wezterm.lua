@@ -8,7 +8,7 @@ config.window_background_opacity = 1
 
 -- font config
 config.font = wezterm.font("JetBrainsMono Nerd Font Mono")
-config.font_size = 19.0
+config.font_size = 14.0
 config.line_height = 0.9
 config.cell_width = 1
 
