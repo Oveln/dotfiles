@@ -36,7 +36,7 @@ set -x MANPATH "/home/linuxbrew/.linuxbrew/share/man" $MANPATH
 set -x INFOPATH "/home/linuxbrew/.linuxbrew/share/info" $INFOPATH
 
 # mason
-set -x PATH /home/oveln/.local/share/nvim/mason/bin $PATH
+# set -x PATH /home/oveln/.local/share/nvim/mason/bin $PATH
 
 function ll
     ls -lh $argv
