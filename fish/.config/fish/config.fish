@@ -6,27 +6,31 @@ set EDITOR nvim
 # proxy
 switch $hostname
     case Oveln-PC
+        # conda
+        source /home/oveln/miniconda3/etc/fish/conf.d/conda.fish
+        set -x PATH /home/oveln/miniconda3/bin $PATH
+
         set -x proxy_url http://172.27.192.1:7890
     case Oveln-Laptop
         set -x proxy_url http://localhost:7890
-	if status is-interactive
-	       set LANG "en_US.UTF-8"
-	       set LANGUAGE "en_US"
-	end
+        if status is-interactive
+            set LANG "en_US.UTF-8"
+            set LANGUAGE en_US
+        end
 end
 set -x http_proxy $proxy_url
 set -x https_proxy $http_proxy
 
 # man
-set -x MANPATH "/usr/share/man"
+set -x MANPATH /usr/share/man
 
 # rust
 set -x PATH /home/oveln/.cargo/bin/ $PATH
 
 # brew
-set -x HOMEBREW_PREFIX "/home/linuxbrew/.linuxbrew";
-set -x HOMEBREW_CELLAR "/home/linuxbrew/.linuxbrew/Cellar";
-set -x HOMEBREW_REPOSITORY "/home/linuxbrew/.linuxbrew/Homebrew";
+set -x HOMEBREW_PREFIX "/home/linuxbrew/.linuxbrew"
+set -x HOMEBREW_CELLAR "/home/linuxbrew/.linuxbrew/Cellar"
+set -x HOMEBREW_REPOSITORY "/home/linuxbrew/.linuxbrew/Homebrew"
 # what is it?
 #set -x PATH "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin${PATH+:$PATH}";
 set -x PATH "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin" $PATH
@@ -38,6 +42,9 @@ set -x INFOPATH "/home/linuxbrew/.linuxbrew/share/info" $INFOPATH
 # mason
 # set -x PATH /home/oveln/.local/share/nvim/mason/bin $PATH
 
+# deno
+set -x DENO_INSTALL "/home/oveln/.deno"
+set -x PATH "$DENO_INSTALL/bin" $PATH
 function ll
     ls -lh $argv
 end
