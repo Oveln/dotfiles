@@ -10,6 +10,9 @@ switch $hostname
         # source /home/oveln/miniconda3/etc/fish/conf.d/conda.fish
         # set -x PATH /home/oveln/miniconda3/bin $PATH
 
+        # riscv-gdb
+        set -x PATH /home/oveln/software/riscv64-unknown-elf-gcc-8.3.0-2020.04.1-x86_64-linux-ubuntu14/bin:$PATH
+
         set -x proxy_url http://172.27.192.1:7890
     case Oveln-Laptop
         set -x proxy_url http://localhost:7890
@@ -45,3 +48,17 @@ set -x PATH /home/oveln/software/qemu-7.0.0/build:$PATH
 
 set fish_greeting "Hello,this is $hostname.
 Welcome to Oveln shell."
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+if test -f /home/oveln/miniconda3/bin/conda
+    eval /home/oveln/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+else
+    if test -f "/home/oveln/miniconda3/etc/fish/conf.d/conda.fish"
+        . "/home/oveln/miniconda3/etc/fish/conf.d/conda.fish"
+    else
+        set -x PATH "/home/oveln/miniconda3/bin" $PATH
+    end
+end
+# <<< conda initialize <<<
+
