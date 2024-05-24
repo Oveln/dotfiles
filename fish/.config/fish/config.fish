@@ -41,7 +41,10 @@ set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
 
 # qemu-7.0.0
-set -x PATH /home/oveln/software/qemu-7.0.0/build:$PATH
+# set -x PATH /home/oveln/software/qemu-7.0.0/build:$PATH
+
+# qemu-9.0.0
+set -x PATH /home/oveln/software/qemu-9.0.0/build:$PATH
 
 # Created by `pipx` on 2024-03-27 06:30:41
 # set PATH $PATH /home/oveln/.local/bin
@@ -52,13 +55,12 @@ Welcome to Oveln shell."
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 if test -f /home/oveln/miniconda3/bin/conda
-    eval /home/oveln/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+    eval /home/oveln/miniconda3/bin/conda "shell.fish" hook $argv | source
 else
     if test -f "/home/oveln/miniconda3/etc/fish/conf.d/conda.fish"
         . "/home/oveln/miniconda3/etc/fish/conf.d/conda.fish"
     else
-        set -x PATH "/home/oveln/miniconda3/bin" $PATH
+        set -x PATH /home/oveln/miniconda3/bin $PATH
     end
 end
 # <<< conda initialize <<<
-
