@@ -16,7 +16,7 @@ config.initial_cols = 120
 config.initial_rows = 50
 
 -- open wsl in windows
-config.default_prog = { "wsl.exe", "tmux new-session -A -s main" }
-config.default_cwd = "//wsl$/Ubuntu/home/oveln"
+config.default_prog = { "wsl.exe", "tmux", "new-session", "-A", "-s", "main" }
+config.default_cwd = "//wsl$/Ubuntu-24.04/home/oveln"
 
 return config
