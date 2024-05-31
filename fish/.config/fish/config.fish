@@ -16,6 +16,7 @@ switch $hostname
         set -x proxy_url http://172.27.192.1:7890
     case Oveln-Laptop
         set -x proxy_url http://localhost:7890
+        fish_add_path /home/oveln/.ghcup/bin
         if status is-interactive
             set LANG "en_US.UTF-8"
             set LANGUAGE en_US
@@ -35,6 +36,7 @@ end
 alias vi="nvim"
 alias lgit="lazygit"
 alias jo="joshuto"
+alias hx="helix"
 
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
